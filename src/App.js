@@ -4,8 +4,10 @@ import styles from "/Users/oliverhertzberg/Documents/Fullstack/fullstack_osa1/pa
 
 
 const Statistics = ({ good, neutral, bad, Average, Positive }) => {
-  return (
-    <div>
+  const feedback = (good+neutral+bad)
+  if(feedback) {
+    return (
+      <div>
       <p className="statistics">good {good}</p>
       <p className="statistics">neutral {neutral}</p>
       <p className="statistics">bad {bad}</p>
@@ -13,7 +15,14 @@ const Statistics = ({ good, neutral, bad, Average, Positive }) => {
       <p className="statistics">average {Average}</p>
       <p className="statistics">positive {Positive}%</p>
     </div>
+    )
+  }
+  return (
+    <div>
+      <p className="statistics">No feedback given</p>
+    </div>
   )
+
 }
 
 
