@@ -1,0 +1,16 @@
+.buttons {
+    background-color: rgb(249, 248, 248);
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 1px;
+    border-radius: 10px;
+    border: 5px solid rgb(0, 0, 0);
+    border-width: 2px;
+}
+
+.statistics {
+    font-size: 25px;
+    font-weight: 450;
+    margin: auto;
+}
