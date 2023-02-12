@@ -1,49 +1,41 @@
 import { useState } from "react"
+import styles from "/Users/oliverhertzberg/Documents/Fullstack/fullstack_osa1/part1/src/styles.css"
 
 
-const Display = ({counter}) => <div>{counter}</div>
 
-const Button = (props) => {
-  return (
-    <button onClick={props.onClick}>
-      {props.text}
-    </button>
-  )
-}
+
+
 
 const App = () => {
-  const [counter, setCounter] = useState(0)
-  console.log('rendering with counter value', counter)
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
-  const increaseByOne = () => {
-    console.log('increasing, value before', counter)
-    setCounter(counter+1)
+  const handleGoodClick = () => {
+    console.log("good:",good)
+    setGood(good + 1)
   }
-  
 
-  const decreaseByOne = () => { 
-    console.log('decreasing, value before', counter)
-    setCounter(counter-1)
+  const handleNeutralClick = () => {
+    console.log("neutral:",neutral)
+    setNeutral(neutral + 1)
   }
-  
-  
-  const setToZero = () => {
-    console.log('resetting to zero, value before', counter)
-    setCounter(0)
+
+  const handleBadClick = () => {
+    console.log("bad:",bad)
+    setBad(bad + 1)
   }
-  
-  return(
+
+  return (
     <div>
-      <Display counter={counter} />
-      <Button onClick={increaseByOne}
-        text='plus'
-      />
-      <Button onClick={setToZero}
-        text='zero'
-      />
-      <Button onClick={decreaseByOne}
-      text='minus'
-      />
+      <h1>give feedback</h1>
+      <button className="buttons" onClick={handleGoodClick}>good</button>
+      <button className="buttons" onClick={handleNeutralClick}>neutral</button>
+      <button className="buttons" onClick={handleBadClick}>bad</button>
+      <h1>statistics</h1>
+      <p className="statistics">good {good}</p>
+      <p className="statistics">neutral {neutral}</p>
+      <p className="statistics">bad {bad}</p>
     </div>
   )
 }
