@@ -3,7 +3,18 @@ import styles from "/Users/oliverhertzberg/Documents/Fullstack/fullstack_osa1/pa
 
 
 
-
+const Statistics = ({ good, neutral, bad, Average, Positive }) => {
+  return (
+    <div>
+      <p className="statistics">good {good}</p>
+      <p className="statistics">neutral {neutral}</p>
+      <p className="statistics">bad {bad}</p>
+      <p className="statistics">all {bad+good+neutral}</p>
+      <p className="statistics">average {Average}</p>
+      <p className="statistics">positive {Positive}%</p>
+    </div>
+  )
+}
 
 
 const App = () => {
@@ -30,6 +41,7 @@ const App = () => {
   //calculating the average
 
   const Positive = (good/(good+bad+neutral))*100
+  //calculating percentage of positive reviews
   
 
   return (
@@ -39,12 +51,7 @@ const App = () => {
       <button className="buttons" onClick={handleNeutralClick}>neutral</button>
       <button className="buttons" onClick={handleBadClick}>bad</button>
       <h1>statistics</h1>
-      <p className="statistics">good {good}</p>
-      <p className="statistics">neutral {neutral}</p>
-      <p className="statistics">bad {bad}</p>
-      <p className="statistics">all {bad+good+neutral}</p>
-      <p className="statistics">average {Average}</p>
-      <p className="statistics">positive {Positive}%</p>
+      <Statistics good={good} bad={bad} neutral={neutral} Average={Average} Positive={Positive}/>
     </div>
   )
 }
