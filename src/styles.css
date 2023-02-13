@@ -1,4 +1,4 @@
-.buttons {
+.buttons > button {
     background-color: rgb(249, 248, 248);
     padding: 5px;
     padding-left: 15px;

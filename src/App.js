@@ -1,20 +1,38 @@
 import { useState } from "react"
-import styles from "/Users/oliverhertzberg/Documents/Fullstack/fullstack_osa1/part1/src/styles.css"
+import styles from "./styles.css"
 
 
+const Button = ({goodClick, neutralClick, badClick}) => {
+  return (
+    <div className="buttons">
+      <button  onClick={goodClick}>good</button>
+      <button  onClick={neutralClick}>neutral</button>
+      <button  onClick={badClick}>bad</button>
+    </div>
+  )
+} 
 
-const Statistics = ({ good, neutral, bad, Average, Positive }) => {
+const StatisticLine = (props) => {
+      return (
+      <div>
+        <p className="statistics">good {props.good}</p>
+        <p className="statistics">neutral {props.neutral}</p>
+        <p className="statistics">bad {props.bad}</p>
+        <p className="statistics">all {props.all}</p>
+        <p className="statistics">average {props.Average}</p>
+        <p className="statistics">positive {props.Positive} %</p>
+      </div>
+      )
+}
+
+
+const Statistics = ({ good, neutral, bad, all, Average, Positive }) => {
   const feedback = (good+neutral+bad)
   if(feedback) {
     return (
       <div>
-      <p className="statistics">good {good}</p>
-      <p className="statistics">neutral {neutral}</p>
-      <p className="statistics">bad {bad}</p>
-      <p className="statistics">all {bad+good+neutral}</p>
-      <p className="statistics">average {Average}</p>
-      <p className="statistics">positive {Positive}%</p>
-    </div>
+      <StatisticLine good={good} bad={bad} neutral={neutral} all={all} Average={Average} Positive={Positive}/>
+      </div>
     )
   }
   return (
@@ -56,11 +74,9 @@ const App = () => {
   return (
     <div>
       <h1>give feedback</h1>
-      <button className="buttons" onClick={handleGoodClick}>good</button>
-      <button className="buttons" onClick={handleNeutralClick}>neutral</button>
-      <button className="buttons" onClick={handleBadClick}>bad</button>
+      <Button goodClick={handleGoodClick} neutralClick={handleNeutralClick} badClick={handleBadClick}/>
       <h1>statistics</h1>
-      <Statistics good={good} bad={bad} neutral={neutral} Average={Average} Positive={Positive}/>
+      <Statistics good={good} bad={bad} neutral={neutral} all={good+bad+neutral} Average={Average} Positive={Positive}/>
     </div>
   )
 }
