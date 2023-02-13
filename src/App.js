@@ -14,16 +14,37 @@ const Button = ({goodClick, neutralClick, badClick}) => {
 
 const StatisticLine = (props) => {
       return (
-      <div>
-        <p className="statistics">good {props.good}</p>
-        <p className="statistics">neutral {props.neutral}</p>
-        <p className="statistics">bad {props.bad}</p>
-        <p className="statistics">all {props.all}</p>
-        <p className="statistics">average {props.Average}</p>
-        <p className="statistics">positive {props.Positive} %</p>
-      </div>
+      <table>
+        <tbody>
+          <tr>
+            <th>good</th>
+            <td>{props.good}</td>
+          </tr>
+          <tr>
+            <th>neutral</th>
+            <td>{props.neutral}</td>          
+          </tr>
+          <tr>
+            <th>bad</th>
+            <td>{props.bad}</td>
+          </tr>
+          <tr>
+            <th>all</th>
+            <td>{props.all}</td>          
+          </tr>
+          <tr>
+            <th>average</th>
+            <td>{props.Average}</td>          
+          </tr>
+          <tr>
+            <th>positive</th>
+            <td>{props.Positive} %</td>          
+          </tr>
+        </tbody>
+      </table>
       )
 }
+
 
 
 const Statistics = ({ good, neutral, bad, all, Average, Positive }) => {
@@ -31,7 +52,7 @@ const Statistics = ({ good, neutral, bad, all, Average, Positive }) => {
   if(feedback) {
     return (
       <div>
-      <StatisticLine good={good} bad={bad} neutral={neutral} all={all} Average={Average} Positive={Positive}/>
+        <StatisticLine good={good} bad={bad} neutral={neutral} all={all} Average={Average} Positive={Positive}/>
       </div>
     )
   }
@@ -50,17 +71,17 @@ const App = () => {
   const [bad, setBad] = useState(0)
 
   const handleGoodClick = () => {
-    console.log("good:",good)
+    console.log("good:",good + 1)
     setGood(good + 1)
   }
 
   const handleNeutralClick = () => {
-    console.log("neutral:",neutral)
+    console.log("neutral:",neutral + 1)
     setNeutral(neutral + 1)
   }
 
   const handleBadClick = () => {
-    console.log("bad:",bad)
+    console.log("bad:",bad + 1)
     setBad(bad + 1)
   }
 
