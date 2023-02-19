@@ -14,3 +14,7 @@ div > button {
     font-weight: 450;
     margin: auto;
 }
+
+div > p {
+    margin: 5px;
+}

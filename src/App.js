@@ -4,6 +4,27 @@ import styles from './styles.css'
 
 import { useState } from 'react'
 
+
+const Button = (props) => {
+  return (
+    <div>
+      <button onClick={props.VoteHandler}>vote</button>
+      <button onClick={props.AnecdoteHandler}>next anecdote</button>
+    </div>
+  )
+}
+
+const Votecounter = (props) => {
+    return (
+      <div>
+        <p>has {props.anecdotevotes} votes</p>
+      </div>
+    )
+}
+
+
+
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often',
@@ -15,20 +36,38 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is the same as if a doctor would refure to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
   ]
+
+  const anecdotevotes = [0,0,0,0,0,0,0,0]
+
     const [selected, setSelected] = useState(0)
 
-    
 
     const AnecdoteHandler = () => {
-      console.log("value of selected: ", selected + 1)
+      //(random integervalue between 0 and 1)*items in the array
       setSelected((Math.floor(Math.random() *(anecdotes.length))))
-    }////(random integervalue between 0 and 1)*items in the array
+    }
+    console.log("value of selected: ", selected)
+
+    const [quotesvotes, setQuotesvotes] = useState(anecdotevotes)
+
+    const voteHandler = () => {
+      const newVotes = [...quotesvotes];
+      newVotes[selected] += 1;
+      setQuotesvotes(newVotes)
+    }
+
+    console.log("value of quotesvotes: ", quotesvotes)
+ 
+    console.log("anecdotevotes at selected: ", anecdotevotes[selected])
+    console.log("value of selected: ",selected)
+
 
     return (
       <div>
         {anecdotes[selected]}
         <br></br>
-        <button onClick={AnecdoteHandler}>next anecdote</button>
+        <Votecounter anecdotevotes={quotesvotes[selected]} />
+        <Button  VoteHandler={voteHandler} AnecdoteHandler={AnecdoteHandler}/>
       </div>
     )
 }
