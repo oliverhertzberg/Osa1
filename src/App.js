@@ -23,6 +23,15 @@ const Votecounter = (props) => {
 }
 
 
+const MostVotes = (props) => {
+  const maxVotesIndex = props.anecdotevotes.indexOf(Math.max(...props.anecdotevotes));
+  return (
+    <div>
+      {props.anecdotes[maxVotesIndex]}
+    </div>
+  )
+}
+
 
 
 const App = () => {
@@ -64,10 +73,13 @@ const App = () => {
 
     return (
       <div>
+        <h1>Anecdote of the day</h1>
         {anecdotes[selected]}
         <br></br>
         <Votecounter anecdotevotes={quotesvotes[selected]} />
         <Button  VoteHandler={voteHandler} AnecdoteHandler={AnecdoteHandler}/>
+        <h1>Anecdote with the most votes</h1>
+        <MostVotes anecdotes={anecdotes} anecdotevotes={quotesvotes} />
       </div>
     )
 }
