@@ -52,8 +52,11 @@ const App = () => {
 
 
     const AnecdoteHandler = () => {
-      //(random integervalue between 0 and 1)*items in the array
-      setSelected((Math.floor(Math.random() *(anecdotes.length))))
+      const nextAnecdote = Math.floor(Math.random() *(anecdotes.length))
+      if(nextAnecdote !== selected) {
+        setSelected(nextAnecdote)
+      }
+      
     }
     console.log("value of selected: ", selected)
 
